@@ -53,7 +53,44 @@ return {
         'nvim-lua/plenary.nvim',
         'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
-    config = true,
+    config = function ()
+      require('flutter-tools').setup({
+        color = {
+        enabled = true,
+        background = false,
+        foreground = false,
+        virtual_text = true,
+        virtual_text_str = "■",
+    },
+})
+      
+    end,
   },
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        config = function()
+            require('tailwindcss-colorizer-cmp').setup({
+                color_square_width = 2, -- Customize the width of the color square
+            })
+        end,
+        ft = {
+            "html",
+            "css",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "vue",
+            "svelte",
+            "rust",
+        },
+
+    },
+  {
+   "Djancyp/better-comments.nvim",
+    config=function ()
+      require("better-comments").config({})
+    end
+  }
 }
 

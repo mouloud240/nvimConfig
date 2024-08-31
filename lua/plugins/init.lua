@@ -12,4 +12,7 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+    "Djancyp/better-comments.nvim"
+  }
 }

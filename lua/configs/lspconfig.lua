@@ -44,6 +44,7 @@ lspconfig.pyright.setup({
   capabilities=capabilities,
   filetypes={"python"}
 })
+
 -- 
 --
 --Example of setting up a single server with custom config
