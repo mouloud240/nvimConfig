@@ -62,6 +62,7 @@ return {
         virtual_text = true,
         virtual_text_str = "■",
     },
+        sdk_path="/home/mouloud/snap/flutter/common/flutter/bin"
 })
       
     end,

@@ -7,7 +7,7 @@ local on_attach = nvlsp.on_attach
 local capabilities = nvlsp.capabilities
 
 -- List of servers to setup with default config
-local servers = { "html", "cssls", "tsserver" }
+local servers = { "html", "cssls", "ts_ls","clangd" }
 
 -- Setup each LSP server
 for _, lsp in ipairs(servers) do
@@ -44,7 +44,17 @@ lspconfig.pyright.setup({
   capabilities=capabilities,
   filetypes={"python"}
 })
-
+lspconfig.dartls.setup({
+  cmd = { 'dart', os.getenv('HOME') .. '/snap/flutter/common/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot', '--lsp' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern('pubspec.yaml'),
+  settings = {
+    dart = {
+      enableSdkFormatter = true,
+    },
+  },
+})
 -- 
 --
 --Example of setting up a single server with custom config

@@ -21,4 +21,7 @@ vim.api.nvim_set_keymap('n', '<leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<C
 -- Open code actions for the selected visual range
 vim.api.nvim_set_keymap('x', '<leader>ca', '<Cmd>lua vim.lsp.buf.range_code_action()<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<space>r', ':lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
+-- Normal mode keymap for formatting using <leader>l
+vim.api.nvim_set_keymap('n', '<leader>l', [[<Cmd>lua require("conform").format({async = true})<CR>]], { noremap = true, silent = true })
 
