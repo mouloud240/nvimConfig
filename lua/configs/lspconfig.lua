@@ -7,7 +7,7 @@ local on_attach = nvlsp.on_attach
 local capabilities = nvlsp.capabilities
 
 -- List of servers to setup with default config
-local servers = { "html", "cssls", "ts_ls","clangd" }
+local servers = { "html", "cssls", "ts_ls","clangd","prismals" }
 
 -- Setup each LSP server
 for _, lsp in ipairs(servers) do
@@ -16,8 +16,26 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
     on_init = nvlsp.on_init
   }
-end
 
+end
+lspconfig.jdtls.setup({
+    cmd = { "jdtls" },
+    root_dir = lspconfig.util.root_pattern("pom.xml", "gradle.build", ".git"),
+    settings = {
+        java = {
+            configuration = {
+                updateBuildConfiguration = "automatic",
+            },
+            inlayHints = {
+                parameterNames = { enabled = "all" },
+            },
+        },
+    },
+})
+lspconfig.dockerls.setup({
+  on_attach=on_attach,
+  capabilities=capabilities
+})
 lspconfig.tailwindcss.setup({
   on_attach=on_attach,
   capabilities=capabilities

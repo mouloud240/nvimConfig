@@ -25,3 +25,9 @@ vim.api.nvim_set_keymap('n', '<space>r', ':lua vim.diagnostic.setloclist()<CR>',
 -- Normal mode keymap for formatting using <leader>l
 vim.api.nvim_set_keymap('n', '<leader>l', [[<Cmd>lua require("conform").format({async = true})<CR>]], { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>cc", ":CopilotChat<CR>", {noremap=true, silent = true, desc = "Open Copilot Chat" })
+
+
+vim.api.nvim_set_keymap("n", "<leader>ci", ":CopilotChat Insert<CR>", {noremap=true, silent = true, desc = "Insert Copilot Chat response" })
+vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_commits<CR>", {noremap=true, silent = true, desc = "Search git commits" })
+vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_bcommits<CR>", {noremap=true, silent = true, desc = "Search git commits for this file" })
