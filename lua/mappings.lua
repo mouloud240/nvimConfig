@@ -31,3 +31,5 @@ vim.api.nvim_set_keymap("n", "<leader>cc", ":CopilotChat<CR>", {noremap=true, si
 vim.api.nvim_set_keymap("n", "<leader>ci", ":CopilotChat Insert<CR>", {noremap=true, silent = true, desc = "Insert Copilot Chat response" })
 vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_commits<CR>", {noremap=true, silent = true, desc = "Search git commits" })
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_bcommits<CR>", {noremap=true, silent = true, desc = "Search git commits for this file" })
+-- Toggle git-ignored files in NvimTree
+vim.api.nvim_set_keymap('n', '<leader>ti', ':lua require("nvim-tree").toggle_gitignore()<CR>', { noremap = true, silent = true })

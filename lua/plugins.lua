@@ -44,8 +44,9 @@ local plugins = {
             virtual_text = false,
             virtual_text_str = "■",
           },
-          on_attach = function(_, bufnr)
+          on_attach = function(client, bufnr)
             -- Your custom on_attach function here, if needed
+                      client.server_capabilities.documentFormattingProvider = false
           end,
           capabilities = require("cmp_nvim_lsp").default_capabilities(),
           settings = {
@@ -176,60 +177,44 @@ local plugins = {
     },
   },
 {
-  'jose-elias-alvarez/null-ls.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    require('null-ls').setup()
-  end
-}
-  ,{
-  'wa11breaker/flutter-bloc.nvim',
-  ft = { "dart" },
-  dependencies = { 'nvim-telescope/telescope.nvim' },
-  config = function()
-    require('flutter-bloc').setup()
-  end
-},
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+        debug=true,
+            sources = {
+                null_ls.builtins.formatting.stylua,
+                null_ls.builtins.formatting.prettierd,
+            },
+            on_attach = function(client, bufnr)
+                -- Only enable formatting for null-ls
+                if client.name == "null-ls" then
+                    client.server_capabilities.documentFormattingProvider = true
+                    client.server_capabilities.documentRangeFormattingProvider = true
+                else
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentRangeFormattingProvider = false
+                end
+            end,
+        })
+    end,
+} , 
+--   {
+--   'wa11breaker/flutter-bloc.nvim',
+--   ft = { "dart" },
+--   dependencies = { 'nvim-telescope/telescope.nvim' },
+--   config = function()
+--     require('flutter-bloc').setup()
+--   end
+-- },
   {
   "prisma/vim-prisma",
     ft={
       "prisma",
     }
   },
- {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    picker = { enabled = true ,}
-      ,
-  
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
-  },
-    keys:{
-      {
-        "n",
-        "<leader>mm",
-        function ()
-         Snacks=require("Snacks")
-          Snacks.picker.grep
-          
-        end
-      }
-    },
-},
+ 
   {
   "CopilotC-Nvim/CopilotChat.nvim",
     lazy=false,

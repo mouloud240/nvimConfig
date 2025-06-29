@@ -67,12 +67,7 @@ lspconfig.dartls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern('pubspec.yaml'),
-  settings = {
-    dart = {
-      enableSdkFormatter = true,
-    },
-  },
-})
+ })
 -- 
 --
 --Example of setting up a single server with custom config
