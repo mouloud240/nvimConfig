@@ -1,9 +1,20 @@
-**This repo is supposed to used as config by NvChad users!**
+# Neovim config files
+this repo is a configuration files for neovim , this config is focused on **Backend developement** especially **typescript** , It has all the lsps and plugins needed for productive Backend developement
+# Installation 
+## Requirements
+- git
+- neovim +0.9
+## Steps
+1. ``` bash 
+  git clone https://github.com/mouloud240/nvimConfig  ~/.config/nvim
+``` 
+2. ``` bash
+ nvim 
+```
+3. and then wait for it to install packages 
 
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
+
 
 # Credits
+This Config is built on top of **nvchad** but adds other configs and functionallities on top of it
 
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
