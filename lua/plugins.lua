@@ -48,8 +48,6 @@ local plugins = {
       "eslint-lsp",
       "emmet-ls",
       "pyright",
-      "dart-debug-adapter", -- Optional but useful with dartls
-      "dart-language-server", -- Sometimes used alongside flutter-tools
       
       -- Formatters
       "prettierd",
@@ -62,47 +60,7 @@ local plugins = {
 },
 
 
-  {
-    "akinsho/flutter-tools.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
-    },
-    config = function()
-      require("flutter-tools").setup {
-        flutter_path = os.getenv "HOME" .. "/snap/flutter/common/flutter/bin/flutter",
-        lsp = {
-          cmd = {
-            os.getenv "HOME" .. "/snap/flutter/common/flutter/bin/cache/dart-sdk/bin/dart",
-            os.getenv "HOME"
-              .. "/snap/flutter/common/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot",
-            "--lsp",
-          },
-          color = {
-            enabled = true,
-            background = true,
-            background_color = { r = 19, g = 17, b = 24 }, -- Define background color
-
-            foreground = false,
-            virtual_text = false,
-            virtual_text_str = "■",
-          },
-          on_attach = function(client, bufnr)
-            -- Your custom on_attach function here, if needed
-                      client.server_capabilities.documentFormattingProvider = false
-          end,
-          capabilities = require("cmp_nvim_lsp").default_capabilities(),
-          settings = {
-            dart = {
-              completeFunctionCalls = true,
-            },
-          },
-        },
-      }
-    end,
-  },
-
+  
   {
     "windwp/nvim-ts-autotag",
     ft = {
@@ -244,15 +202,6 @@ local plugins = {
         })
     end,
 } , 
---   {
---   'wa11breaker/flutter-bloc.nvim',
---   ft = { "dart" },
---   dependencies = { 'nvim-telescope/telescope.nvim' },
---   config = function()
---     require('flutter-bloc').setup()
---   end
--- },
-  {
   "prisma/vim-prisma",
     ft={
       "prisma",
