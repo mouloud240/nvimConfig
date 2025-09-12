@@ -7,7 +7,7 @@ local on_attach = nvlsp.on_attach
 local capabilities = nvlsp.capabilities
 
 -- List of servers to setup with default config
-local servers = { "html", "cssls", "ts_ls","clangd","prismals" }
+local servers = { "html", "cssls", "ts_ls","clangd","prismals","intelephense" ,"gopls","gh_actions_ls"}
 
 -- Setup each LSP server
 for _, lsp in ipairs(servers) do

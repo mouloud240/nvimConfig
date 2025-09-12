@@ -6,17 +6,61 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+  
+{
+  "vyfor/cord.nvim",
+  build = ":Cord update", -- needs compilation
+  event = "VeryLazy",
+  config = function()
+    require("cord").setup({
+        assets={
+ file = function(filename)
+      -- check for pattern like foo.keyword.ts
+      if filename:match("%.keyword%.ts$") then
+        return "nestjs"  -- <- must match the asset key you uploaded in Discord Developer Portal
+      end
+      -- fallback: let cord.nvim decide
+      return nil
+    end,
+  },
+        })
+          
+  end,
+},
+{
+"christoomey/vim-tmux-navigator",
+    lazy = false,
+  }
+,
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "eslint-lsp",
-        "prettierd",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-      },
+  "williamboman/mason.nvim",
+  opts = {
+    ensure_installed = {
+      -- LSP Servers
+      "html-lsp",
+      "css-lsp",
+      "typescript-language-server",
+      "clangd",
+      "prisma-language-server",
+      "jdtls",
+      "dockerfile-language-server",
+"tailwindcss-language-server",
+      "eslint-lsp",
+      "emmet-ls",
+      "pyright",
+      "dart-debug-adapter", -- Optional but useful with dartls
+      "dart-language-server", -- Sometimes used alongside flutter-tools
+      
+      -- Formatters
+      "prettierd",
+      "stylua",
+
+      -- (Optional) linters or other utilities
+      -- Add any other tools you're using with null-ls or conform
     },
   },
+},
+
 
   {
     "akinsho/flutter-tools.nvim",
@@ -230,6 +274,18 @@ local plugins = {
     require("CopilotChat").setup()
   end
   },
+
+{
+  "folke/todo-comments.nvim",
+
+  lazy=false,
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+  
+  }
+  
+},
+
   {
   "folke/trouble.nvim",
   opts = {}, -- for default options, refer to the configuration section for custom setup.

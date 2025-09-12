@@ -2,8 +2,16 @@ require "nvchad.mappings"
 
 -- add yours here
 
+
+
 local map = vim.keymap.set
 
+
+vim.api.nvim_set_keymap("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-\\>", "<Cmd>TmuxNavigatePrevious<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 map("i", "jk", "<ESC>")
 map("n","<C-d>","<C-d>zz")
