@@ -7,10 +7,10 @@ this repo is a configuration files for neovim , this config is focused on **Back
 ## Steps
 1. ``` bash 
   git clone https://github.com/mouloud240/nvimConfig  ~/.config/nvim
-``` 
+    ``` 
 2. ``` bash
  nvim 
-```
+    ```
 3. and then wait for it to install packages 
 
 
