@@ -14,6 +14,10 @@ this repo is a configuration files for neovim , this config is focused on **Back
    ```bash
    nvim
    ```
+3. execture this nvim command:
+   ```vim
+   :MasonInstall html-lsp css-lsp typescript-language-server clangd prisma-language-server jdtls dockerfile-language-server pyright tailwindcss-language-server eslint-lsp emmet-ls prettierd stylua
+   ```
 
 3. Wait for it to install packages.
 
