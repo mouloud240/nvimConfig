@@ -27,6 +27,11 @@ local plugins = {
           
   end,
 },
+
+{
+  "stevearc/dressing.nvim",
+  event = "VeryLazy"
+},
 {
 "christoomey/vim-tmux-navigator",
     lazy = false,
@@ -44,6 +49,7 @@ local plugins = {
       "prisma-language-server",
       "jdtls",
       "dockerfile-language-server",
+        "pyright",
 "tailwindcss-language-server",
       "eslint-lsp",
       "emmet-ls",

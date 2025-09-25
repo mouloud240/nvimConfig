@@ -18,7 +18,6 @@ this repo is a configuration files for neovim , this config is focused on **Back
 3. Wait for it to install packages.
 
 
-
-# Credits
+# 
 This Config is built on top of **nvchad** but adds other configs and functionallities on top of it
 
