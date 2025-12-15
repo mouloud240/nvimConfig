@@ -1,4 +1,5 @@
 -- Load default configurations
+vim.g.lspconfig = { silence_deprecation = true }
 local nvlsp = require("nvchad.configs.lspconfig")
 nvlsp.defaults()
 
@@ -7,7 +8,7 @@ local on_attach = nvlsp.on_attach
 local capabilities = nvlsp.capabilities
 
 -- List of servers to setup with default config
-local servers = { "html", "cssls", "ts_ls","clangd","prismals","intelephense" ,"gopls","gh_actions_ls","buf_ls"}
+local servers = { "html", "cssls", "ts_ls","clangd","prismals","intelephense" ,"gopls","gh_actions_ls","buf_ls","sqlls","sqls"}
 
 -- Setup each LSP server
 for _, lsp in ipairs(servers) do
@@ -57,6 +58,15 @@ lspconfig.emmet_ls.setup({
       },
     }
 })
+lspconfig.r_language_server.setup{
+  -- optional: custom on_attach / capabilities
+  on_attach = function(client, bufnr)
+    -- your on_attach stuff
+  end,
+  -- explicit command ensures Neovim uses R to run the server
+  cmd = { "R", "--slave", "-e", "languageserver::run()" },
+  filetypes = { "r", "rmd" },
+}
 lspconfig.pyright.setup({
   on_attach=on_attach,
   capabilities=capabilities,

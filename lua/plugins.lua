@@ -13,20 +13,27 @@ local plugins = {
   event = "VeryLazy",
   config = function()
     require("cord").setup({
-        assets={
- file = function(filename)
-      -- check for pattern like foo.keyword.ts
-      if filename:match("%.keyword%.ts$") then
-        return "nestjs"  -- <- must match the asset key you uploaded in Discord Developer Portal
-      end
-      -- fallback: let cord.nvim decide
-      return nil
-    end,
-  },
+        editor={
+          tooltip="Better than VSCode!",
+          
+        },
+                assets={
+
+    },
         })
           
   end,
 },
+  {
+  "iamcco/markdown-preview.nvim",
+    lazy=false,
+  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  build = "cd app && npm install",
+  init = function()
+    vim.g.mkdp_filetypes = { "markdown" }
+  end,
+},
+
 
 {
   "stevearc/dressing.nvim",
@@ -37,6 +44,7 @@ local plugins = {
     lazy = false,
   }
 ,
+  
   {
   "williamboman/mason.nvim",
   opts = {
