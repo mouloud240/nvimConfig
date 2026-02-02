@@ -41,3 +41,5 @@ vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_commits<CR>", {norema
 vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_bcommits<CR>", {noremap=true, silent = true, desc = "Search git commits for this file" })
 -- Toggle git-ignored files in NvimTree
 vim.api.nvim_set_keymap('n', '<leader>ti', ':lua require("nvim-tree").toggle_gitignore()<CR>', { noremap = true, silent = true })
+-- Markdown Preview
+vim.api.nvim_set_keymap("n", "<leader>cp", "<Plug>MarkdownPreviewToggle", { noremap = false, silent = true, desc = "Toggle Markdown Preview" })
